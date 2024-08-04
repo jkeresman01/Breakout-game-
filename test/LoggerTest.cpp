@@ -47,9 +47,15 @@ TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainCorrectFileIn
 TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainCorrectLineNumber)
 {
     LOG_DEBUG("test logging | severity debug");
+
+    int32_t excpectedLineNumber = __LINE__ - 2;
+
+    std::stringstream ss;
+    ss << "line: " << excpectedLineNumber;
+
     std::string logDebugOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("line: 45") != std::string::npos);
+    EXPECT_TRUE(logDebugOutput.find(ss.str()) != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainLineNumber)
@@ -79,9 +85,15 @@ TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainCorrectFileInf
 TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainCorrectLineNumber)
 {
     LOG_INFO("test logging | severity info");
+
+    int32_t excpectedLineNumber = __LINE__ - 2;
+
+    std::stringstream ss;
+    ss << "line: " << excpectedLineNumber;
+
     std::string logInfoOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logInfoOutput.find("line: 77") != std::string::npos);
+    EXPECT_TRUE(logInfoOutput.find(ss.str()) != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainLineNumber)
@@ -111,9 +123,15 @@ TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainCorrectFileInf
 TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainCorrectLineNumber)
 {
     LOG_WARN("test logging | severity warn");
+
+    int32_t excpectedLineNumber = __LINE__ - 2;
+
+    std::stringstream ss;
+    ss << "line: " << excpectedLineNumber;
+
     std::string logWarnOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logWarnOutput.find("line: 109") != std::string::npos);
+    EXPECT_TRUE(logWarnOutput.find(ss.str()) != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainLineNumber)
@@ -143,9 +161,15 @@ TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainCorrectFileIn
 TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainCorrectLineNumber)
 {
     LOG_ERROR("test logging | severity error");
+
+    int32_t excpectedLineNumber = __LINE__ - 2;
+
+    std::stringstream ss;
+    ss << "line: " << excpectedLineNumber;
+
     std::string logErrorOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logErrorOutput.find("line: 141") != std::string::npos);
+    EXPECT_TRUE(logErrorOutput.find(ss.str()) != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainLineNumber)
