@@ -1,25 +1,29 @@
 #include <gtest/gtest.h>
 
-#include <sstream>
 #include <iostream>
+#include <sstream>
 
 #include "../src/headers/Logger.h"
 
-class LoggerTest : public ::testing::Test {
-protected:
-    std::streambuf* originalCerrStreamBuf;
+class LoggerTest : public ::testing::Test
+{
+  protected:
+    std::streambuf *originalCerrStreamBuf;
     std::ostringstream capturedCerrStream;
 
-    void SetUp() override {
+    void SetUp() override
+    {
         originalCerrStreamBuf = std::cerr.rdbuf();
         std::cerr.rdbuf(capturedCerrStream.rdbuf());
     }
 
-    void TearDown() override {
+    void TearDown() override
+    {
         std::cerr.rdbuf(originalCerrStreamBuf);
     }
 
-    std::string getCapturedCerrOutput() {
+    std::string getCapturedCerrOutput()
+    {
         return capturedCerrStream.str();
     }
 };
