@@ -14,8 +14,3 @@ set(SOURCE_FILES
 add_executable(breakout-game ${SOURCE_FILES})
 
 target_link_libraries(breakout-game sfml-graphics sfml-window sfml-system)
-
-add_custom_command(TARGET breakout-game POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_SOURCE_DIR}/src/resources $<TARGET_FILE_DIR:breakout-game>/resources
-)
