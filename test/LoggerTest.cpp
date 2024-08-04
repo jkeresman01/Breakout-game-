@@ -60,98 +60,98 @@ TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainLineNumber)
     EXPECT_TRUE(logDebugOutput.find("test logging | severity debug") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContatinDebugSeverity)
+TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContatinInfoSeverity)
 {
     LOG_INFO("test logging | severity info");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logInfoOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("[INFO]") != std::string::npos);
+    EXPECT_TRUE(logInfoOutput.find("[INFO]") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainCorrectFileInformation)
 {
     LOG_INFO("test logging | severity info");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logInfoOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("LoggerTest.cpp") != std::string::npos);
+    EXPECT_TRUE(logInfoOutput.find("LoggerTest.cpp") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainCorrectLineNumber)
 {
     LOG_INFO("test logging | severity info");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logInfoOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("line: 77") != std::string::npos);
+    EXPECT_TRUE(logInfoOutput.find("line: 77") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainLineNumber)
 {
     LOG_INFO("test logging | severity info");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logInfoOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("test logging | severity info") != std::string::npos);
+    EXPECT_TRUE(logInfoOutput.find("test logging | severity info") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContatinDebugSeverity)
+TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContatinWarnSeverity)
 {
     LOG_WARN("test logging | severity warn");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logWarnOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("[WARN]") != std::string::npos);
+    EXPECT_TRUE(logWarnOutput.find("[WARN]") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainCorrectFileInformation)
 {
     LOG_WARN("test logging | severity warn");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logWarnOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("LoggerTest.cpp") != std::string::npos);
+    EXPECT_TRUE(logWarnOutput.find("LoggerTest.cpp") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainCorrectLineNumber)
 {
     LOG_WARN("test logging | severity warn");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logWarnOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("line: 109") != std::string::npos);
+    EXPECT_TRUE(logWarnOutput.find("line: 109") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainLineNumber)
 {
     LOG_WARN("test logging | severity warn");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logWarnOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("test logging | severity warn") != std::string::npos);
+    EXPECT_TRUE(logWarnOutput.find("test logging | severity warn") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContatinDebugSeverity)
+TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContatinErrorSeverity)
 {
     LOG_ERROR("test logging | severity error");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logErrorOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("[ERROR]") != std::string::npos);
+    EXPECT_TRUE(logErrorOutput.find("[ERROR]") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainCorrectFileInformation)
 {
     LOG_ERROR("test logging | severity error");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logErrorOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("LoggerTest.cpp") != std::string::npos);
+    EXPECT_TRUE(logErrorOutput.find("LoggerTest.cpp") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainCorrectLineNumber)
 {
     LOG_ERROR("test logging | severity error");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logErrorOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("line: 141") != std::string::npos);
+    EXPECT_TRUE(logErrorOutput.find("line: 141") != std::string::npos);
 }
 
 TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainLineNumber)
 {
     LOG_ERROR("test logging | severity error");
-    std::string logDebugOutput = getCapturedCerrOutput();
+    std::string logErrorOutput = getCapturedCerrOutput();
 
-    EXPECT_TRUE(logDebugOutput.find("test logging | severity error") != std::string::npos);
+    EXPECT_TRUE(logErrorOutput.find("test logging | severity error") != std::string::npos);
 }
