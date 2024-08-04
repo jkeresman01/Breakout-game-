@@ -28,7 +28,7 @@ class LoggerTest : public ::testing::Test
     }
 };
 
-TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContatinDebugSeverity)
+TEST_F(LoggerTest, AfterLOG_DEBUGisInvoked_WillLogInformationContatinDebugSeverity)
 {
     LOG_DEBUG("test logging | severity debug");
     std::string logDebugOutput = getCapturedCerrOutput();
@@ -36,7 +36,7 @@ TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContatinDebugSeverit
     EXPECT_TRUE(logDebugOutput.find("[DEBUG]") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainCorrectFileInformation)
+TEST_F(LoggerTest, AfterLOG_DEBUGisInvoked_WillLogInformationContainCorrectFileInformation)
 {
     LOG_DEBUG("test logging | severity debug");
     std::string logDebugOutput = getCapturedCerrOutput();
@@ -44,7 +44,7 @@ TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainCorrectFileIn
     EXPECT_TRUE(logDebugOutput.find("LoggerTest.cpp") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainCorrectLineNumber)
+TEST_F(LoggerTest, AfterLOG_DEBUGisInvoked_WillLogInformationContainCorrectLineNumber)
 {
     LOG_DEBUG("test logging | severity debug");
 
@@ -58,7 +58,7 @@ TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainCorrectLineNu
     EXPECT_TRUE(logDebugOutput.find(ss.str()) != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainLineNumber)
+TEST_F(LoggerTest, AfterLOG_DEBUGisInvoked_WillLogInformationContainLineNumber)
 {
     LOG_DEBUG("test logging | severity debug");
     std::string logDebugOutput = getCapturedCerrOutput();
@@ -66,7 +66,7 @@ TEST_F(LoggerTest, AfterLOG_DEBUGisInvokedWillLogInformationContainLineNumber)
     EXPECT_TRUE(logDebugOutput.find("test logging | severity debug") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContatinInfoSeverity)
+TEST_F(LoggerTest, AfterLOG_INFOisInvoked_WillLogInformationContatinInfoSeverity)
 {
     LOG_INFO("test logging | severity info");
     std::string logInfoOutput = getCapturedCerrOutput();
@@ -74,7 +74,7 @@ TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContatinInfoSeverity)
     EXPECT_TRUE(logInfoOutput.find("[INFO]") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainCorrectFileInformation)
+TEST_F(LoggerTest, AfterLOG_INFOisInvoked_WillLogInformationContainCorrectFileInformation)
 {
     LOG_INFO("test logging | severity info");
     std::string logInfoOutput = getCapturedCerrOutput();
@@ -82,7 +82,7 @@ TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainCorrectFileInf
     EXPECT_TRUE(logInfoOutput.find("LoggerTest.cpp") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainCorrectLineNumber)
+TEST_F(LoggerTest, AfterLOG_INFOisInvoked_WillLogInformationContainCorrectLineNumber)
 {
     LOG_INFO("test logging | severity info");
 
@@ -96,7 +96,7 @@ TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainCorrectLineNum
     EXPECT_TRUE(logInfoOutput.find(ss.str()) != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainLineNumber)
+TEST_F(LoggerTest, AfterLOG_INFOisInvoked_WillLogInformationContainLineNumber)
 {
     LOG_INFO("test logging | severity info");
     std::string logInfoOutput = getCapturedCerrOutput();
@@ -104,7 +104,7 @@ TEST_F(LoggerTest, AfterLOG_INFOisInvokedWillLogInformationContainLineNumber)
     EXPECT_TRUE(logInfoOutput.find("test logging | severity info") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContatinWarnSeverity)
+TEST_F(LoggerTest, AfterLOG_WARNisInvoked_WillLogInformationContatinWarnSeverity)
 {
     LOG_WARN("test logging | severity warn");
     std::string logWarnOutput = getCapturedCerrOutput();
@@ -112,7 +112,7 @@ TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContatinWarnSeverity)
     EXPECT_TRUE(logWarnOutput.find("[WARN]") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainCorrectFileInformation)
+TEST_F(LoggerTest, AfterLOG_WARNisInvoked_WillLogInformationContainCorrectFileInformation)
 {
     LOG_WARN("test logging | severity warn");
     std::string logWarnOutput = getCapturedCerrOutput();
@@ -120,7 +120,7 @@ TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainCorrectFileInf
     EXPECT_TRUE(logWarnOutput.find("LoggerTest.cpp") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainCorrectLineNumber)
+TEST_F(LoggerTest, AfterLOG_WARNisInvoked_WillLogInformationContainCorrectLineNumber)
 {
     LOG_WARN("test logging | severity warn");
 
@@ -134,7 +134,7 @@ TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainCorrectLineNum
     EXPECT_TRUE(logWarnOutput.find(ss.str()) != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainLineNumber)
+TEST_F(LoggerTest, AfterLOG_WARNisInvoked_WillLogInformationContainLineNumber)
 {
     LOG_WARN("test logging | severity warn");
     std::string logWarnOutput = getCapturedCerrOutput();
@@ -142,7 +142,7 @@ TEST_F(LoggerTest, AfterLOG_WARNisInvokedWillLogInformationContainLineNumber)
     EXPECT_TRUE(logWarnOutput.find("test logging | severity warn") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContatinErrorSeverity)
+TEST_F(LoggerTest, AfterLOG_ERRORisInvoked_WillLogInformationContatinErrorSeverity)
 {
     LOG_ERROR("test logging | severity error");
     std::string logErrorOutput = getCapturedCerrOutput();
@@ -150,7 +150,7 @@ TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContatinErrorSeverit
     EXPECT_TRUE(logErrorOutput.find("[ERROR]") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainCorrectFileInformation)
+TEST_F(LoggerTest, AfterLOG_ERRORisInvoked_WillLogInformationContainCorrectFileInformation)
 {
     LOG_ERROR("test logging | severity error");
     std::string logErrorOutput = getCapturedCerrOutput();
@@ -158,7 +158,7 @@ TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainCorrectFileIn
     EXPECT_TRUE(logErrorOutput.find("LoggerTest.cpp") != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainCorrectLineNumber)
+TEST_F(LoggerTest, AfterLOG_ERRORisInvoked_WillLogInformationContainCorrectLineNumber)
 {
     LOG_ERROR("test logging | severity error");
 
@@ -172,7 +172,7 @@ TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainCorrectLineNu
     EXPECT_TRUE(logErrorOutput.find(ss.str()) != std::string::npos);
 }
 
-TEST_F(LoggerTest, AfterLOG_ERRORisInvokedWillLogInformationContainLineNumber)
+TEST_F(LoggerTest, AfterLOG_ERRORisInvoked_WillLogInformationContainLineNumber)
 {
     LOG_ERROR("test logging | severity error");
     std::string logErrorOutput = getCapturedCerrOutput();
