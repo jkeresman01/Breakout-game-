@@ -12,10 +12,12 @@ include_directories(${SFML_INCLUDE_DIRS})
 include_directories(../src/headers)
 
 set(SOURCE_FILES
+    ../src/Paddle.cpp
 )
 
 set(TEST_FILES
     Test.cpp
+    PaddleTest.cpp
     LoggerTest.cpp
 )
 
