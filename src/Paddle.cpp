@@ -53,7 +53,7 @@ void Paddle::update()
 
     if (isPaddlePositionOnRightBorder)
     {
-        m_paddle.setPosition(screen::WIDTH - m_paddle.getSize().x, m_paddle.getPosition().y);
+        m_paddle.setPosition(screen::WIDTH - paddle::WIDTH, m_paddle.getPosition().y);
     }
 }
 

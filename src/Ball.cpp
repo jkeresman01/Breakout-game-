@@ -16,26 +16,20 @@ void Ball::update(Paddle &paddle, std::vector<Brick> &bricks)
 {
     m_ball.move(m_velocity);
 
-    bool isOnLeftOrRightBorder = m_ball.getPosition().x < 0 or m_ball.getPosition().x + m_ball.getRadius() * 2 > screen::WIDTH;
-    if (isOnLeftOrRightBorder)
+    bool isBallOnLeftBorder = m_ball.getPosition().x < 0;
+    bool isBallOnRightBorder = m_ball.getPosition().x + m_ball.getRadius() * 2 > screen::WIDTH;
+
+    if (isBallOnLeftBorder or isBallOnRightBorder)
     {
         m_velocity.x = -m_velocity.x;
     }
 
     bool isBallOnTopBorder = m_ball.getPosition().y < 0;
-    if (isBallOnTopBorder)
+    bool isBallIntersactingPaddle =  m_ball.getGlobalBounds().intersects(paddle.getBounds());
+
+    if (isBallOnTopBorder or isBallIntersactingPaddle)
     {
         m_velocity.y = -m_velocity.y;
-    }
-
-    if (m_ball.getGlobalBounds().intersects(paddle.getBounds()))
-    {
-        m_velocity.y = -m_velocity.y;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-    {
-        start();
     }
 
     std::vector<Brick>::iterator it = bricks.begin();
@@ -50,6 +44,11 @@ void Ball::update(Paddle &paddle, std::vector<Brick> &bricks)
         {
             ++it;
         }
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+    {
+        start();
     }
 
     bool isGameOver = m_ball.getPosition().y > screen::HEIGHT;
