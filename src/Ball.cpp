@@ -25,7 +25,7 @@ void Ball::update(Paddle &paddle, std::vector<Brick> &bricks)
     }
 
     bool isBallOnTopBorder = m_ball.getPosition().y < 0;
-    bool isBallIntersactingPaddle =  m_ball.getGlobalBounds().intersects(paddle.getBounds());
+    bool isBallIntersactingPaddle = m_ball.getGlobalBounds().intersects(paddle.getBounds());
 
     if (isBallOnTopBorder or isBallIntersactingPaddle)
     {
