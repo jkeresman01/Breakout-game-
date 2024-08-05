@@ -2,19 +2,18 @@
 
 namespace breakout
 {
-    class Paddle
-    {
-        public:
-            Paddle();
+class Paddle
+{
+  public:
+    Paddle();
 
-            float getHeight() const;
-            float getWidth() const;
+    float getHeight() const;
+    float getWidth() const;
 
-            void setHeight(float height);
+    void setHeight(float height);
 
-        private:
-            float m_height;
-    };
+  private:
+    float m_height;
+};
 
-}
-
+} // namespace breakout
