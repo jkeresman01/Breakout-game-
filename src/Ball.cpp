@@ -16,13 +16,14 @@ void Ball::update(Paddle &paddle, std::vector<Brick> &bricks)
 {
     m_ball.move(m_velocity);
 
-    if (m_ball.getPosition().x < 0 or
-        m_ball.getPosition().x + m_ball.getRadius() * 2 > screen::WIDTH)
+    bool isOnLeftOrRightBorder = m_ball.getPosition().x < 0 or m_ball.getPosition().x + m_ball.getRadius() * 2 > screen::WIDTH;
+    if (isOnLeftOrRightBorder)
     {
         m_velocity.x = -m_velocity.x;
     }
 
-    if (m_ball.getPosition().y < 0)
+    bool isBallOnTopBorder = m_ball.getPosition().y < 0;
+    if (isBallOnTopBorder)
     {
         m_velocity.y = -m_velocity.y;
     }
@@ -51,7 +52,8 @@ void Ball::update(Paddle &paddle, std::vector<Brick> &bricks)
         }
     }
 
-    if (m_ball.getPosition().y > screen::HEIGHT)
+    bool isGameOver = m_ball.getPosition().y > screen::HEIGHT;
+    if (isGameOver)
     {
         reset();
     }
