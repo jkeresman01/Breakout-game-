@@ -7,7 +7,8 @@ namespace breakout
 
 BreakoutGame::BreakoutGame()
     : m_window(sf::VideoMode(screen::WIDTH, screen::HEIGHT), "Breakout BreakoutGame"), m_paddle(),
-      m_ball()
+      m_ball(), m_background()
+
 {
     reset();
 }
@@ -44,7 +45,8 @@ void BreakoutGame::update()
 
 void BreakoutGame::render()
 {
-    m_window.clear();
+    m_window.clear(sf::Color(13, 12, 3));
+    m_background.render(m_window);
     m_paddle.render(m_window);
     m_ball.render(m_window);
     renderBricks();
@@ -60,12 +62,12 @@ void BreakoutGame::reset()
 {
     m_bricks.clear();
 
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 10; ++i)
     {
         for (int j = 0; j < 20; ++j)
         {
-            float positionX = j * (brick::WIDTH + brick::SPACING_X);
-            float positionY = i * (brick::HEIGHT + brick::SPACING_Y);
+            float positionX = brick::START_POSTION_X + j * (brick::WIDTH + brick::SPACING_X);
+            float positionY = brick::START_POSTION_Y + i * (brick::HEIGHT + brick::SPACING_Y);
 
             m_bricks.emplace_back(positionX, positionY);
         }

@@ -8,7 +8,9 @@ namespace breakout
 Paddle::Paddle() : m_speed(paddle::SPEED)
 {
     m_paddle.setSize(sf::Vector2f(paddle::WIDTH, paddle::HEIGHT));
-    m_paddle.setFillColor(sf::Color::Red);
+    m_paddle.setFillColor(sf::Color(250, 191, 106, 40));
+    m_paddle.setOutlineThickness(4.0f);
+    m_paddle.setOutlineColor(sf::Color(250, 191, 106, 180));
     m_paddle.setPosition(paddle::POSITION_X, paddle::POSITION_Y);
 }
 

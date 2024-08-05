@@ -10,7 +10,7 @@ namespace breakout
 Ball::Ball() : m_velocity(ball::VELOCITY, -ball::VELOCITY)
 {
     m_ball.setRadius(ball::RADIUS);
-    m_ball.setFillColor(sf::Color::White);
+    m_ball.setFillColor(sf::Color::Yellow);
     reset();
 }
 

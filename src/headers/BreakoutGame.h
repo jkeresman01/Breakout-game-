@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Background.h"
 #include "Ball.h"
 #include "Brick.h"
 #include "Paddle.h"
@@ -29,6 +30,7 @@ class BreakoutGame
     sf::RenderWindow m_window;
     Paddle m_paddle;
     Ball m_ball;
+    Background m_background;
     std::list<Brick> m_bricks;
 };
 
