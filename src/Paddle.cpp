@@ -1,47 +1,70 @@
 #include "headers/Paddle.h"
 
 #include "headers/GameConstants.h"
-#include "headers/Logger.h"
 
 namespace breakout
 {
 
-Paddle::Paddle()
+Paddle::Paddle() : m_speed(paddle::SPEED)
 {
-    setHeight(paddle::HEIGHT);
-    setWidth(paddle::WIDTH);
+    m_paddle.setSize(sf::Vector2f(paddle::WIDTH, paddle::HEIGHT));
+    m_paddle.setFillColor(sf::Color::Red);
+    m_paddle.setPosition(paddle::POSITION_X, paddle::POSITION_Y);
 }
 
-float Paddle::getHeight() const
+void Paddle::processInput()
 {
-    return m_height;
-}
+    bool isLeftKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
 
-float Paddle::getWidth() const
-{
-    return m_width;
-}
-
-void Paddle::setHeight(float height)
-{
-    if (height < 0)
+    if (isLeftKeyPressed)
     {
-        LOG_ERROR("Failed to set height, height can't be negative number!");
-        return;
+        moveLeft();
     }
 
-    m_height = height;
+    bool isRightKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+
+    if (isRightKeyPressed)
+    {
+        moveRight();
+    }
 }
 
-void Paddle::setWidth(float width)
+void Paddle::moveLeft()
 {
-    if (width < 0)
+    m_paddle.move(-m_speed, 0);
+}
+
+void Paddle::moveRight()
+{
+    m_paddle.move(m_speed, 0);
+}
+
+void Paddle::update()
+{
+    bool isPaddlePositionOnLeftBorder = m_paddle.getPosition().x < 0;
+
+    if (isPaddlePositionOnLeftBorder)
     {
-        LOG_ERROR("Failed to set width, width can't be negative number!");
-        return;
+        m_paddle.setPosition(0, m_paddle.getPosition().y);
     }
 
-    m_width = width;
+    bool isPaddlePositionOnRightBorder =
+        m_paddle.getPosition().x + m_paddle.getSize().x > screen::WIDTH;
+
+    if (isPaddlePositionOnRightBorder)
+    {
+        m_paddle.setPosition(screen::WIDTH - m_paddle.getSize().x, m_paddle.getPosition().y);
+    }
+}
+
+void Paddle::render(sf::RenderWindow &window)
+{
+    window.draw(m_paddle);
+}
+
+sf::FloatRect Paddle::getBounds() const
+{
+    return m_paddle.getGlobalBounds();
 }
 
 } // namespace breakout

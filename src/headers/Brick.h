@@ -4,25 +4,18 @@
 
 namespace breakout
 {
-class Paddle
+
+class Brick
 {
 
   public:
-    Paddle();
+    Brick(float positionX, float positionY);
 
-    void processInput();
-    void update();
     void render(sf::RenderWindow &window);
-
     sf::FloatRect getBounds() const;
 
   private:
-    void moveLeft();
-    void moveRight();
-
-  private:
-    sf::RectangleShape m_paddle;
-    float m_speed;
+    sf::RectangleShape m_brick;
 };
 
 } // namespace breakout

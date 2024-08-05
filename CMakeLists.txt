@@ -9,6 +9,10 @@ include_directories(src/headers)
 
 set(SOURCE_FILES
     src/Main.cpp
+    src/Ball.cpp
+    src/Brick.cpp
+    src/BreakoutGame.cpp
+    src/Paddle.cpp
 )
 
 add_executable(breakout-game ${SOURCE_FILES})
