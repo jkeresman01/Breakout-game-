@@ -6,7 +6,7 @@
 #include "Brick.h"
 #include "Paddle.h"
 
-#include <vector>
+#include <list>
 
 namespace breakout
 {
@@ -25,10 +25,11 @@ class BreakoutGame
 
     void renderBricks();
 
+  private:
     sf::RenderWindow m_window;
     Paddle m_paddle;
     Ball m_ball;
-    std::vector<Brick> m_bricks;
+    std::list<Brick> m_bricks;
 };
 
 } // namespace breakout

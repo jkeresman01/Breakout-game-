@@ -2,6 +2,8 @@
 
 #include "headers/GameConstants.h"
 
+#include <list>
+
 namespace breakout
 {
 
@@ -12,7 +14,7 @@ Ball::Ball() : m_velocity(ball::VELOCITY, -ball::VELOCITY)
     reset();
 }
 
-void Ball::update(Paddle &paddle, std::vector<Brick> &bricks)
+void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
 {
     m_ball.move(m_velocity);
 
@@ -32,7 +34,7 @@ void Ball::update(Paddle &paddle, std::vector<Brick> &bricks)
         m_velocity.y = -m_velocity.y;
     }
 
-    std::vector<Brick>::iterator it = bricks.begin();
+    std::list<Brick>::iterator it = bricks.begin();
     while (it != bricks.end())
     {
         if (m_ball.getGlobalBounds().intersects(it->getBounds()))

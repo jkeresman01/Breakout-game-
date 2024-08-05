@@ -5,7 +5,7 @@
 #include "Brick.h"
 #include "Paddle.h"
 
-#include <vector>
+#include <list>
 
 namespace breakout
 {
@@ -15,7 +15,7 @@ class Ball
   public:
     Ball();
 
-    void update(Paddle &paddle, std::vector<Brick> &bricks);
+    void update(Paddle &paddle, std::list<Brick> &bricks);
     void render(sf::RenderWindow &window);
     void reset();
     void start();
