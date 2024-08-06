@@ -3,8 +3,8 @@
 #include "headers/GameConstants.h"
 #include "headers/Logger.h"
 
-#include <list>
 #include <cmath>
+#include <list>
 
 namespace breakout
 {
@@ -22,7 +22,7 @@ void Ball::loadSound(const std::filesystem::path &path)
 {
     bool isSoundEffectLoadedSuccessfully = m_soundBuffer.loadFromFile(path.string());
 
-    if(!isSoundEffectLoadedSuccessfully)
+    if (!isSoundEffectLoadedSuccessfully)
     {
         LOG_ERROR("Failed to load sound effect from " << path.string() << "!");
         return;
@@ -51,7 +51,7 @@ void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
         m_velocity.y = -m_velocity.y;
     }
 
-    if(isBallIntersactingPaddle)
+    if (isBallIntersactingPaddle)
     {
         float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
         float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;

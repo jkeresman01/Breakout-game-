@@ -60,7 +60,7 @@ void Paddle::update()
     }
 }
 
-sf::Vector2f Paddle::getPosition() const 
+sf::Vector2f Paddle::getPosition() const
 {
     return m_paddle.getPosition();
 }
