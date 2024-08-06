@@ -62,6 +62,7 @@ void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
         float bounceAngle = normalizedRelativeIntersectionX * (75 * (M_PI / 180.0f));
 
         float speed = std::sqrt(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y);
+
         m_velocity.x = speed * std::sin(bounceAngle);
         m_velocity.y = -speed * std::cos(bounceAngle);
     }
