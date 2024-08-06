@@ -4,9 +4,9 @@
 
 namespace breakout
 {
+
 class Paddle
 {
-
   public:
     Paddle();
 

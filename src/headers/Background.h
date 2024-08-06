@@ -8,6 +8,7 @@
 
 namespace breakout
 {
+
 class Background
 {
   public:

@@ -35,7 +35,7 @@ constexpr float SPACING_Y = 5.0f;
 
 namespace ball
 {
-constexpr float VELOCITY = 0.8;
+constexpr float VELOCITY = 0.8f;
 constexpr float RADIUS = 10.0f;
 } // namespace ball
 

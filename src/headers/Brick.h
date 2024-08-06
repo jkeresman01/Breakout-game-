@@ -7,7 +7,6 @@ namespace breakout
 
 class Brick
 {
-
   public:
     Brick(float positionX, float positionY);
 
