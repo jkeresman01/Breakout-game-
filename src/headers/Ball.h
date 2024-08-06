@@ -1,10 +1,12 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "Brick.h"
 #include "Paddle.h"
 
+#include <filesystem>
 #include <list>
 
 namespace breakout
@@ -21,8 +23,13 @@ class Ball
     void start();
 
   private:
+    void loadSound(const std::filesystem::path &path);
+
+  private:
     sf::CircleShape m_ball;
     sf::Vector2f m_velocity;
+    sf::SoundBuffer m_soundBuffer;
+    sf::Sound m_brickHitSoundEffect;
 };
 
 } // namespace breakout

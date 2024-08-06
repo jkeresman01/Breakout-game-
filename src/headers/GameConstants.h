@@ -16,9 +16,8 @@ constexpr float WIDTH = 100.0f;
 
 constexpr float SPEED = 2.0f;
 
-constexpr float POSITION_X = screen::HEIGHT - 10.0f;
+constexpr float POSITION_X = screen::WIDTH / 2 - paddle::WIDTH / 2;
 constexpr float POSITION_Y = screen::HEIGHT - 50.0f;
-
 } // namespace paddle
 
 namespace brick
@@ -35,7 +34,7 @@ constexpr float SPACING_Y = 5.0f;
 
 namespace ball
 {
-constexpr float VELOCITY = 0.8f;
+constexpr float VELOCITY = 1.2;
 constexpr float RADIUS = 10.0f;
 } // namespace ball
 

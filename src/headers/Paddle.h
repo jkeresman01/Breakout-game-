@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/System/Vector2.hpp>
 
 namespace breakout
 {
@@ -15,6 +16,7 @@ class Paddle
     void render(sf::RenderWindow &window);
 
     sf::FloatRect getBounds() const;
+    sf::Vector2f getPosition() const;
 
   private:
     void moveLeft();

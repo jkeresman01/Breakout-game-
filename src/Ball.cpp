@@ -1,8 +1,10 @@
 #include "headers/Ball.h"
 
 #include "headers/GameConstants.h"
+#include "headers/Logger.h"
 
 #include <list>
+#include <cmath>
 
 namespace breakout
 {
@@ -11,7 +13,22 @@ Ball::Ball() : m_velocity(ball::VELOCITY, -ball::VELOCITY)
 {
     m_ball.setRadius(ball::RADIUS);
     m_ball.setFillColor(sf::Color::Yellow);
+
+    loadSound("resources/sound/brick_hit.wav");
     reset();
+}
+
+void Ball::loadSound(const std::filesystem::path &path)
+{
+    bool isSoundEffectLoadedSuccessfully = m_soundBuffer.loadFromFile(path.string());
+
+    if(!isSoundEffectLoadedSuccessfully)
+    {
+        LOG_ERROR("Failed to load sound effect from " << path.string() << "!");
+        return;
+    }
+
+    m_brickHitSoundEffect.setBuffer(m_soundBuffer);
 }
 
 void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
@@ -34,12 +51,28 @@ void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
         m_velocity.y = -m_velocity.y;
     }
 
+    if(isBallIntersactingPaddle)
+    {
+        float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
+        float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;
+        float relativeIntersectX = ballCenterX - paddleCenterX;
+
+        float normalizedRelativeIntersectionX = relativeIntersectX / (paddle::WIDTH / 2.0f);
+
+        float bounceAngle = normalizedRelativeIntersectionX * (75 * (M_PI / 180.0f));
+
+        float speed = std::sqrt(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y);
+        m_velocity.x = speed * std::sin(bounceAngle);
+        m_velocity.y = -speed * std::cos(bounceAngle);
+    }
+
     std::list<Brick>::iterator it = bricks.begin();
     while (it != bricks.end())
     {
         if (m_ball.getGlobalBounds().intersects(it->getBounds()))
         {
             m_velocity.y = -m_velocity.y;
+            m_brickHitSoundEffect.play();
             it = bricks.erase(it);
         }
         else

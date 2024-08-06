@@ -1,6 +1,7 @@
 #include "headers/Paddle.h"
 
 #include "headers/GameConstants.h"
+#include <SFML/System/Vector2.hpp>
 
 namespace breakout
 {
@@ -57,6 +58,11 @@ void Paddle::update()
     {
         m_paddle.setPosition(screen::WIDTH - paddle::WIDTH, m_paddle.getPosition().y);
     }
+}
+
+sf::Vector2f Paddle::getPosition() const 
+{
+    return m_paddle.getPosition();
 }
 
 void Paddle::render(sf::RenderWindow &window)
