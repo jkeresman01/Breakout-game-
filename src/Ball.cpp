@@ -46,7 +46,7 @@ void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
     bool isBallOnTopBorder = m_ball.getPosition().y < 0;
     bool isBallIntersactingPaddle = m_ball.getGlobalBounds().intersects(paddle.getBounds());
 
-    if (isBallOnTopBorder or isBallIntersactingPaddle)
+    if (isBallOnTopBorder)
     {
         m_velocity.y = -m_velocity.y;
     }
