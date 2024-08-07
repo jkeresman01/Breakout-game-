@@ -92,12 +92,17 @@ void Ball::changeBallTrajectory(const Paddle &paddle)
     m_velocity.y = -speed * std::cos(bounceAngleInRadians);
 }
 
-float Ball::calculateBounceAngle(const Paddle &paddle)
+float Ball::calculateRelativeIntersectX(const Paddle &paddle)
 {
     float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
     float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;
-    float relativeIntersectX = ballCenterX - paddleCenterX;
 
+    return ballCenterX - paddleCenterX;
+}
+    
+float Ball::calculateBounceAngle(const Paddle &paddle)
+{
+    float relativeIntersectX = calculateRelativeIntersectX(paddle);
     float normalizedRelativeIntersectionX = relativeIntersectX / (paddle::WIDTH / 2.0f);
 
     return normalizedRelativeIntersectionX * (75 * (M_PI / 180.0f));

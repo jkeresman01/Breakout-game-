@@ -6,7 +6,7 @@ namespace breakout
 {
 
 BreakoutGame::BreakoutGame()
-    : m_window(sf::VideoMode(screen::WIDTH, screen::HEIGHT), "Breakout BreakoutGame"), m_paddle(),
+    : m_window(sf::VideoMode(screen::WIDTH, screen::HEIGHT), "Breakout Game"), m_paddle(),
       m_ball(), m_background()
 
 {
