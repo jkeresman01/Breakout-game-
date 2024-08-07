@@ -18,14 +18,12 @@ Paddle::Paddle() : m_speed(paddle::SPEED)
 void Paddle::update()
 {
     bool isLefKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
-
     if (isLefKeyPressed)
     {
         moveLeft();
     }
 
     bool isRightKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
-
     if (isRightKeyPressed)
     {
         moveRight();
