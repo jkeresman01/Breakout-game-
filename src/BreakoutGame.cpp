@@ -33,8 +33,6 @@ void BreakoutGame::processEvents()
             m_window.close();
         }
     }
-
-    m_paddle.processInput();
 }
 
 void BreakoutGame::update()

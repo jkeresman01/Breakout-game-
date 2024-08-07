@@ -11,16 +11,14 @@ class Paddle
   public:
     Paddle();
 
-    void processInput();
     void update();
     void render(sf::RenderWindow &window);
 
-    sf::FloatRect getBounds() const;
-    sf::Vector2f getPosition() const;
-
-  private:
     void moveLeft();
     void moveRight();
+
+    sf::FloatRect getBounds() const;
+    sf::Vector2f getPosition() const;
 
   private:
     sf::RectangleShape m_paddle;

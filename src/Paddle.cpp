@@ -15,11 +15,11 @@ Paddle::Paddle() : m_speed(paddle::SPEED)
     m_paddle.setPosition(paddle::POSITION_X, paddle::POSITION_Y);
 }
 
-void Paddle::processInput()
+void Paddle::update()
 {
-    bool isLeftKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+    bool isLefKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
 
-    if (isLeftKeyPressed)
+    if (isLefKeyPressed)
     {
         moveLeft();
     }
@@ -34,30 +34,20 @@ void Paddle::processInput()
 
 void Paddle::moveLeft()
 {
-    m_paddle.move(-m_speed, 0);
+    bool isPaddlePositionOnLeftBorder = m_paddle.getPosition().x < 0;
+
+    isPaddlePositionOnLeftBorder ? m_paddle.setPosition(0, m_paddle.getPosition().y)
+                                 : m_paddle.move(-m_speed, 0);
 }
 
 void Paddle::moveRight()
 {
-    m_paddle.move(m_speed, 0);
-}
-
-void Paddle::update()
-{
-    bool isPaddlePositionOnLeftBorder = m_paddle.getPosition().x < 0;
-
-    if (isPaddlePositionOnLeftBorder)
-    {
-        m_paddle.setPosition(0, m_paddle.getPosition().y);
-    }
-
     bool isPaddlePositionOnRightBorder =
         m_paddle.getPosition().x + m_paddle.getSize().x > screen::WIDTH;
 
-    if (isPaddlePositionOnRightBorder)
-    {
-        m_paddle.setPosition(screen::WIDTH - paddle::WIDTH, m_paddle.getPosition().y);
-    }
+    isPaddlePositionOnRightBorder
+        ? m_paddle.setPosition(screen::WIDTH - paddle::WIDTH, m_paddle.getPosition().y)
+        : m_paddle.move(m_speed, 0);
 }
 
 sf::Vector2f Paddle::getPosition() const
