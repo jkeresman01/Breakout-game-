@@ -9,7 +9,7 @@
 namespace breakout
 {
 
-Ball::Ball() : m_velocity(ball::VELOCITY, -ball::VELOCITY)
+Ball::Ball() : m_velocity(ball::VELOCITY_X_COMPONENT, ball::VELOCITY_Y_COMPONENT)
 {
     m_ball.setRadius(ball::RADIUS);
     m_ball.setFillColor(sf::Color::Yellow);
@@ -31,7 +31,7 @@ void Ball::loadSound(const std::filesystem::path &path)
     m_brickHitSoundEffect.setBuffer(m_soundBuffer);
 }
 
-void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
+void Ball::update(const Paddle &paddle, std::list<Brick> &bricks)
 {
     m_ball.move(m_velocity);
 
@@ -53,18 +53,7 @@ void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
 
     if (isBallIntersactingPaddle)
     {
-        float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
-        float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;
-        float relativeIntersectX = ballCenterX - paddleCenterX;
-
-        float normalizedRelativeIntersectionX = relativeIntersectX / (paddle::WIDTH / 2.0f);
-
-        float bounceAngle = normalizedRelativeIntersectionX * (75 * (M_PI / 180.0f));
-
-        float speed = std::sqrt(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y);
-
-        m_velocity.x = speed * std::sin(bounceAngle);
-        m_velocity.y = -speed * std::cos(bounceAngle);
+        changeBallTrajectory(paddle);
     }
 
     std::list<Brick>::iterator it = bricks.begin();
@@ -94,6 +83,35 @@ void Ball::update(Paddle &paddle, std::list<Brick> &bricks)
     }
 }
 
+void Ball::changeBallTrajectory(const Paddle &paddle)
+{ 
+    float bounceAngleInRadians = calculateBounceAngle(paddle);
+    float speed = calculateSpeed();
+
+    m_velocity.x = speed * std::sin(bounceAngleInRadians);
+    m_velocity.y = -speed * std::cos(bounceAngleInRadians);
+}
+
+float Ball::calculateBounceAngle(const Paddle &paddle)
+{ 
+    float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
+    float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;
+    float relativeIntersectX = ballCenterX - paddleCenterX;
+
+    float normalizedRelativeIntersectionX = relativeIntersectX / (paddle::WIDTH / 2.0f);
+
+    return normalizedRelativeIntersectionX * (75 * (M_PI / 180.0f));
+}
+
+float Ball::calculateSpeed()
+{
+    float velocityXcomponent = std::pow(m_velocity.x, 2);
+    float velocityYcomponent  = std::pow(m_velocity.y, 2);
+
+    return std::sqrt(velocityXcomponent + velocityYcomponent);
+    
+}
+
 void Ball::render(sf::RenderWindow &window)
 {
     window.draw(m_ball);
@@ -101,7 +119,7 @@ void Ball::render(sf::RenderWindow &window)
 
 void Ball::start()
 {
-    m_velocity = {ball::VELOCITY, -ball::VELOCITY};
+    m_velocity = {0, ball::VELOCITY_Y_COMPONENT};
 }
 
 void Ball::reset()

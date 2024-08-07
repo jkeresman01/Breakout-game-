@@ -17,10 +17,15 @@ class Ball
   public:
     Ball();
 
-    void update(Paddle &paddle, std::list<Brick> &bricks);
+    void update(const Paddle &paddle, std::list<Brick> &bricks);
     void render(sf::RenderWindow &window);
     void reset();
     void start();
+
+    private:
+    float calculateSpeed();
+    float calculateBounceAngle(const Paddle &paddle);
+    void changeBallTrajectory(const Paddle &paddle);
 
   private:
     void loadSound(const std::filesystem::path &path);
