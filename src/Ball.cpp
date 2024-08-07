@@ -99,7 +99,7 @@ float Ball::calculateRelativeIntersectX(const Paddle &paddle)
 
     return ballCenterX - paddleCenterX;
 }
-    
+
 float Ball::calculateBounceAngle(const Paddle &paddle)
 {
     float relativeIntersectX = calculateRelativeIntersectX(paddle);
