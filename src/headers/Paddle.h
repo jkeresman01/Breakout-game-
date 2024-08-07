@@ -18,7 +18,7 @@ class Paddle
     void moveRight();
 
     void setPosition(float positionX, float positionY);
-    
+
     sf::FloatRect getBounds() const;
     sf::Vector2f getPosition() const;
 

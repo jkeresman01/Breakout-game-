@@ -1,15 +1,15 @@
 #include <SFML/System/Vector2.hpp>
 #include <gtest/gtest.h>
 
-#include "../src/headers/Paddle.h"
 #include "../src/headers/GameConstants.h"
+#include "../src/headers/Paddle.h"
 
 using namespace breakout;
 
 class PaddleTest : public ::testing::Test
 {
-    protected:
-        Paddle paddle;
+  protected:
+    Paddle paddle;
 };
 
 TEST_F(PaddleTest, AfterPaddleIsCreated_WillPaddlePositionBeInTheMiddle)
@@ -29,17 +29,18 @@ TEST_F(PaddleTest, AfterPaddleIsMovedToTheRight_WillPaddlePositionYBeGreaterThan
 }
 
 TEST_F(PaddleTest, AfterPaddleIsMovedToTheRight_WillPaddlePositionYRemainUnchanged)
-{ 
+{
     sf::Vector2f paddlePositionBeforeMoveRight = paddle.getPosition();
 
     paddle.moveRight();
 
     sf::Vector2f paddlePositionAfterMoveRight = paddle.getPosition();
-    
+
     EXPECT_EQ(paddlePositionAfterMoveRight.y, paddlePositionAfterMoveRight.y);
 }
 
-TEST_F(PaddleTest, AfterPaddleIsMovedToTheRightAndItsPositionIsOnRightBorder_WillPaddleStayInsideTheBorders)
+TEST_F(PaddleTest,
+       AfterPaddleIsMovedToTheRightAndItsPositionIsOnRightBorder_WillPaddleStayInsideTheBorders)
 {
     paddle.setPosition(screen::WIDTH, paddle::POSITION_Y);
 
@@ -70,7 +71,8 @@ TEST_F(PaddleTest, AfterPaddleIsMovedToTheLeft_WillPaddlePositionYRemainUnchange
     EXPECT_LE(paddlePositionAfterMoveRight.y, paddlePositionBeforeMoveRight.y);
 }
 
-TEST_F(PaddleTest, AfterPaddleIsMovedToTheLeftAndItsPositionIsOnLeftBorder_WillPaddleStayInsideTheBorders)
+TEST_F(PaddleTest,
+       AfterPaddleIsMovedToTheLeftAndItsPositionIsOnLeftBorder_WillPaddleStayInsideTheBorders)
 {
     paddle.setPosition(-10, paddle::POSITION_Y);
 
@@ -78,5 +80,3 @@ TEST_F(PaddleTest, AfterPaddleIsMovedToTheLeftAndItsPositionIsOnLeftBorder_WillP
 
     EXPECT_EQ(paddle.getPosition().x, 0);
 }
-
-
