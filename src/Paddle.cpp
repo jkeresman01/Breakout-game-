@@ -30,6 +30,11 @@ void Paddle::update()
     }
 }
 
+void Paddle::render(sf::RenderWindow &window)
+{
+    window.draw(m_paddle);
+}
+
 void Paddle::moveLeft()
 {
     bool isPaddlePositionOnLeftBorder = m_paddle.getPosition().x < 0;
@@ -48,14 +53,14 @@ void Paddle::moveRight()
         : m_paddle.move(m_speed, 0);
 }
 
+void Paddle::setPosition(float positionX, float positionY)
+{
+    m_paddle.setPosition(positionX, positionY);
+}
+
 sf::Vector2f Paddle::getPosition() const
 {
     return m_paddle.getPosition();
-}
-
-void Paddle::render(sf::RenderWindow &window)
-{
-    window.draw(m_paddle);
 }
 
 sf::FloatRect Paddle::getBounds() const

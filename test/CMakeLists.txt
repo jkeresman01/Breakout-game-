@@ -17,6 +17,7 @@ set(SOURCE_FILES
 
 set(TEST_FILES
     Test.cpp
+    PaddleTest.cpp
     LoggerTest.cpp
 )
 
