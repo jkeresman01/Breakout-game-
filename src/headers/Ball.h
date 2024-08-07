@@ -22,7 +22,7 @@ class Ball
     void reset();
     void start();
 
-    private:
+  private:
     float calculateSpeed();
     float calculateBounceAngle(const Paddle &paddle);
     void changeBallTrajectory(const Paddle &paddle);

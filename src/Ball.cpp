@@ -84,7 +84,7 @@ void Ball::update(const Paddle &paddle, std::list<Brick> &bricks)
 }
 
 void Ball::changeBallTrajectory(const Paddle &paddle)
-{ 
+{
     float bounceAngleInRadians = calculateBounceAngle(paddle);
     float speed = calculateSpeed();
 
@@ -93,7 +93,7 @@ void Ball::changeBallTrajectory(const Paddle &paddle)
 }
 
 float Ball::calculateBounceAngle(const Paddle &paddle)
-{ 
+{
     float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
     float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;
     float relativeIntersectX = ballCenterX - paddleCenterX;
@@ -106,10 +106,9 @@ float Ball::calculateBounceAngle(const Paddle &paddle)
 float Ball::calculateSpeed()
 {
     float velocityXcomponent = std::pow(m_velocity.x, 2);
-    float velocityYcomponent  = std::pow(m_velocity.y, 2);
+    float velocityYcomponent = std::pow(m_velocity.y, 2);
 
     return std::sqrt(velocityXcomponent + velocityYcomponent);
-    
 }
 
 void Ball::render(sf::RenderWindow &window)
