@@ -17,7 +17,7 @@ TEST_F(PaddleTest, AfterPaddleIsCreated_WillPaddlePositionBeInTheMiddle)
     EXPECT_EQ(paddle.getPosition().x, screen::WIDTH / 2 - paddle::WIDTH / 2);
 }
 
-TEST_F(PaddleTest, AfterPaddleIsMovedToTheRight_WillPaddlePositionYBeGreaterThanBeforeMoveRight)
+TEST_F(PaddleTest, AfterPaddleIsMovedToTheRight_WillPaddlePositionXBeGreaterThanBeforeMoveRight)
 {
     sf::Vector2f paddlePositionBeforeMoveRight = paddle.getPosition();
 
