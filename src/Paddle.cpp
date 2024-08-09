@@ -1,7 +1,8 @@
 #include "headers/Paddle.h"
 
-#include "headers/GameConstants.h"
 #include <SFML/System/Vector2.hpp>
+
+#include "headers/GameConstants.h"
 
 namespace breakout
 {

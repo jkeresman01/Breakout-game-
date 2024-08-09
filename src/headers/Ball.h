@@ -4,11 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Vector2.hpp>
 
-#include "Brick.h"
-#include "Paddle.h"
-
 #include <filesystem>
 #include <list>
+
+#include "Brick.h"
+#include "Paddle.h"
 
 namespace breakout
 {

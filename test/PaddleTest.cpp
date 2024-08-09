@@ -1,5 +1,6 @@
-#include <SFML/System/Vector2.hpp>
 #include <gtest/gtest.h>
+
+#include <SFML/System/Vector2.hpp>
 
 #include "../src/headers/GameConstants.h"
 #include "../src/headers/Paddle.h"

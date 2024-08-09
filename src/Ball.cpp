@@ -1,11 +1,12 @@
 #include "headers/Ball.h"
 
-#include "headers/GameConstants.h"
-#include "headers/Logger.h"
-
 #include <SFML/System/Vector2.hpp>
+
 #include <cmath>
 #include <list>
+
+#include "headers/GameConstants.h"
+#include "headers/Logger.h"
 
 namespace breakout
 {

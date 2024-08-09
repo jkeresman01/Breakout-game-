@@ -2,12 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <list>
+
 #include "Background.h"
 #include "Ball.h"
 #include "Brick.h"
 #include "Paddle.h"
-
-#include <list>
 
 namespace breakout
 {
