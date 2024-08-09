@@ -16,6 +16,8 @@ constexpr float WIDTH = 100.0f;
 
 constexpr float SPEED = 2.0f;
 
+constexpr float OUTLINE_THICKNESS = 4.0f;
+
 constexpr float POSITION_X = screen::WIDTH / 2 - paddle::WIDTH / 2;
 constexpr float POSITION_Y = screen::HEIGHT - 50.0f;
 } // namespace paddle
