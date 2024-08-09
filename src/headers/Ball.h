@@ -31,7 +31,9 @@ class Ball
     float calculateSpeed();
     float calculateBounceAngleInRadians(const Paddle &paddle);
     float calculateRelativeIntersectX(const Paddle &paddle);
+
     void changeBallTrajectory(const Paddle &paddle);
+    void checkForBrickHits(std::list<Brick> &bricks);
 
     void loadSound(const std::filesystem::path &path);
 

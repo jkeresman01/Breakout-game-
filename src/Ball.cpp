@@ -32,35 +32,60 @@ void Ball::loadSound(const std::filesystem::path &path)
     m_brickHitSoundEffect.setBuffer(m_soundBuffer);
 }
 
+void Ball::render(sf::RenderWindow &window)
+{
+    window.draw(m_ball);
+}
+
+void Ball::start()
+{
+    bool isBallMoving = m_velocity.x != 0 or m_velocity.y != 0;
+    if(!isBallMoving)
+    {
+        m_velocity = {0, -ball::VELOCITY_Y_COMPONENT};
+    }
+}
+
+void Ball::reset()
+{
+    m_ball.setPosition(screen::WIDTH / 2 - m_ball.getRadius(),
+                       screen::HEIGHT / 2 - m_ball.getRadius());
+    m_velocity = {0, 0};
+}
+
 void Ball::update(const Paddle &paddle, std::list<Brick> &bricks)
 {
     m_ball.move(m_velocity);
 
     bool isBallOnLeftBorder = m_ball.getPosition().x < 0;
     bool isBallOnRightBorder = m_ball.getPosition().x + m_ball.getRadius() * 2 > screen::WIDTH;
-
     if (isBallOnLeftBorder or isBallOnRightBorder)
     {
         m_velocity.x = -m_velocity.x;
     }
 
     bool isBallOnTopBorder = m_ball.getPosition().y < 0;
-    bool isBallIntersactingPaddle = m_ball.getGlobalBounds().intersects(paddle.getBounds());
-
     if (isBallOnTopBorder)
     {
         m_velocity.y = -m_velocity.y;
     }
 
+    bool isBallIntersactingPaddle = m_ball.getGlobalBounds().intersects(paddle.getBounds());
     if (isBallIntersactingPaddle)
     {
         changeBallTrajectory(paddle);
     }
 
-    std::list<Brick>::iterator it = bricks.begin();
-    while (it != bricks.end())
+    checkForBrickHits(bricks);
+}
+
+void Ball::checkForBrickHits(std::list<Brick> &bricks)
+{
+    std::list<Brick>::iterator it;
+    for (it = bricks.begin(); it != bricks.end();)
     {
-        if (m_ball.getGlobalBounds().intersects(it->getBounds()))
+        bool isBallIntersectingBrick = m_ball.getGlobalBounds().intersects(it->getBounds());
+        if (isBallIntersectingBrick)
         {
             m_velocity.y = -m_velocity.y;
             m_brickHitSoundEffect.play();
@@ -70,17 +95,6 @@ void Ball::update(const Paddle &paddle, std::list<Brick> &bricks)
         {
             ++it;
         }
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-    {
-        start();
-    }
-
-    bool isGameOver = m_ball.getPosition().y > screen::HEIGHT;
-    if (isGameOver)
-    {
-        reset();
     }
 }
 
@@ -93,12 +107,12 @@ void Ball::changeBallTrajectory(const Paddle &paddle)
     m_velocity.y = -speed * std::cos(bounceAngleInRadians);
 }
 
-float Ball::calculateRelativeIntersectX(const Paddle &paddle)
+float Ball::calculateSpeed()
 {
-    float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
-    float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;
+    float velocityXcomponent = std::pow(m_velocity.x, 2);
+    float velocityYcomponent = std::pow(m_velocity.y, 2);
 
-    return ballCenterX - paddleCenterX;
+    return std::sqrt(velocityXcomponent + velocityYcomponent);
 }
 
 float Ball::calculateBounceAngleInRadians(const Paddle &paddle)
@@ -109,29 +123,12 @@ float Ball::calculateBounceAngleInRadians(const Paddle &paddle)
     return normalizedRelativeIntersectionX * (75 * (M_PI / 180.0f));
 }
 
-float Ball::calculateSpeed()
+float Ball::calculateRelativeIntersectX(const Paddle &paddle)
 {
-    float velocityXcomponent = std::pow(m_velocity.x, 2);
-    float velocityYcomponent = std::pow(m_velocity.y, 2);
+    float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
+    float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;
 
-    return std::sqrt(velocityXcomponent + velocityYcomponent);
-}
-
-void Ball::render(sf::RenderWindow &window)
-{
-    window.draw(m_ball);
-}
-
-void Ball::start()
-{
-    m_velocity = {0, -ball::VELOCITY_Y_COMPONENT};
-}
-
-void Ball::reset()
-{
-    m_ball.setPosition(screen::WIDTH / 2 - m_ball.getRadius(),
-                       screen::HEIGHT / 2 - m_ball.getRadius());
-    m_velocity = {0, 0};
+    return ballCenterX - paddleCenterX;
 }
 
 sf::Vector2f Ball::getPosition() const
