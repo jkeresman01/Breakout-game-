@@ -13,14 +13,17 @@ include_directories(../src/headers)
 
 set(SOURCE_FILES
     ../src/Paddle.cpp
+    ../src/Ball.cpp
+    ../src/Brick.cpp
 )
 
 set(TEST_FILES
     Test.cpp
+    BallTest.cpp
     PaddleTest.cpp
     LoggerTest.cpp
 )
 
 add_executable(run-tests ${SOURCE_FILES} ${TEST_FILES})
 
-target_link_libraries(run-tests ${GTEST_LIBRARIES} pthread sfml-graphics sfml-window sfml-system)
+target_link_libraries(run-tests ${GTEST_LIBRARIES} pthread sfml-graphics sfml-window sfml-system sfml-audio)

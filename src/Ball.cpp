@@ -3,13 +3,14 @@
 #include "headers/GameConstants.h"
 #include "headers/Logger.h"
 
+#include <SFML/System/Vector2.hpp>
 #include <cmath>
 #include <list>
 
 namespace breakout
 {
 
-Ball::Ball() : m_velocity(ball::VELOCITY_X_COMPONENT, ball::VELOCITY_Y_COMPONENT)
+Ball::Ball() : m_velocity(0.0f, 0.0f)
 {
     m_ball.setRadius(ball::RADIUS);
     m_ball.setFillColor(sf::Color::Yellow);
@@ -123,7 +124,7 @@ void Ball::render(sf::RenderWindow &window)
 
 void Ball::start()
 {
-    m_velocity = {0, ball::VELOCITY_Y_COMPONENT};
+    m_velocity = {0, -ball::VELOCITY_Y_COMPONENT};
 }
 
 void Ball::reset()
@@ -131,6 +132,21 @@ void Ball::reset()
     m_ball.setPosition(screen::WIDTH / 2 - m_ball.getRadius(),
                        screen::HEIGHT / 2 - m_ball.getRadius());
     m_velocity = {0, 0};
+}
+
+sf::Vector2f Ball::getPosition() const
+{
+    return m_ball.getPosition();
+}
+
+float Ball::getRadius() const
+{
+    return m_ball.getRadius();
+}
+
+sf::Vector2f Ball::getVelocity() const
+{
+    return m_velocity;
 }
 
 } // namespace breakout

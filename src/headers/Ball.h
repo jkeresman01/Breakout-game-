@@ -2,6 +2,7 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/System/Vector2.hpp>
 
 #include "Brick.h"
 #include "Paddle.h"
@@ -22,14 +23,16 @@ class Ball
     void reset();
     void start();
 
+    sf::Vector2f getPosition() const;
+    sf::Vector2f getVelocity() const;
+    float getRadius() const;
+
   private:
     float calculateSpeed();
     float calculateBounceAngleInRadians(const Paddle &paddle);
     float calculateRelativeIntersectX(const Paddle &paddle);
-
     void changeBallTrajectory(const Paddle &paddle);
 
-  private:
     void loadSound(const std::filesystem::path &path);
 
   private:
