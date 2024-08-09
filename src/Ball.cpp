@@ -67,7 +67,7 @@ void Ball::update(const Paddle &paddle, std::list<Brick> &bricks)
         m_velocity.y = -m_velocity.y;
     }
 
-    if(isBallHittingBottomBorder())
+    if (isBallHittingBottomBorder())
     {
         reset();
     }
