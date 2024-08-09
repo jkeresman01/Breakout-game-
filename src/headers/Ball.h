@@ -24,7 +24,7 @@ class Ball
 
   private:
     float calculateSpeed();
-    float calculateBounceAngle(const Paddle &paddle);
+    float calculateBounceAngleInRadians(const Paddle &paddle);
     float calculateRelativeIntersectX(const Paddle &paddle);
 
     void changeBallTrajectory(const Paddle &paddle);
