@@ -32,6 +32,11 @@ class Ball
     float calculateBounceAngleInRadians(const Paddle &paddle);
     float calculateRelativeIntersectX(const Paddle &paddle);
 
+    bool isBallHittingVerticalBorder();
+    bool isBallHittingTopBorder();
+    bool isBallHittingBottomBorder();
+    bool isBallIntersectingPaddle(const Paddle &paddle);
+
     void changeBallTrajectory(const Paddle &paddle);
     void checkForBrickHits(std::list<Brick> &bricks);
 

@@ -57,26 +57,50 @@ void Ball::update(const Paddle &paddle, std::list<Brick> &bricks)
 {
     m_ball.move(m_velocity);
 
-    bool isBallOnLeftBorder = m_ball.getPosition().x < 0;
-    bool isBallOnRightBorder = m_ball.getPosition().x + m_ball.getRadius() * 2 > screen::WIDTH;
-    if (isBallOnLeftBorder or isBallOnRightBorder)
+    if (isBallHittingVerticalBorder())
     {
         m_velocity.x = -m_velocity.x;
     }
 
-    bool isBallOnTopBorder = m_ball.getPosition().y < 0;
-    if (isBallOnTopBorder)
+    if (isBallHittingTopBorder())
     {
         m_velocity.y = -m_velocity.y;
     }
 
-    bool isBallIntersactingPaddle = m_ball.getGlobalBounds().intersects(paddle.getBounds());
-    if (isBallIntersactingPaddle)
+    if(isBallHittingBottomBorder())
+    {
+        reset();
+    }
+
+    if (isBallIntersectingPaddle(paddle))
     {
         changeBallTrajectory(paddle);
     }
 
     checkForBrickHits(bricks);
+}
+
+bool Ball::isBallHittingBottomBorder()
+{
+    return m_ball.getPosition().y > screen::HEIGHT + m_ball.getRadius() * 2;
+}
+
+bool Ball::isBallHittingTopBorder()
+{
+    return m_ball.getPosition().y < 0;
+}
+
+bool Ball::isBallHittingVerticalBorder()
+{
+    bool isBallOnLeftBorder = m_ball.getPosition().x < 0;
+    bool isBallOnRightBorder = m_ball.getPosition().x + m_ball.getRadius() * 2 > screen::WIDTH;
+
+    return isBallOnRightBorder or isBallOnLeftBorder;
+}
+
+bool Ball::isBallIntersectingPaddle(const Paddle &paddle)
+{
+    return m_ball.getGlobalBounds().intersects(paddle.getBounds());
 }
 
 void Ball::checkForBrickHits(std::list<Brick> &bricks)
