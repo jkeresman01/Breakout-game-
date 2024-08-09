@@ -26,8 +26,6 @@ TEST_F(BallTest, afterBallIsCreatedWillItsVelocityBeZero)
 
 TEST_F(BallTest, afterBallIsCreatedWillItsPostionBeInTheMiddleOfTheScreen)
 {
-    sf::Vector2f ballPosition = ball.getPosition();
-
-    EXPECT_EQ(ballPosition.x, screen::WIDTH / 2 - ball.getRadius());
-    EXPECT_EQ(ballPosition.y, screen::HEIGHT / 2 - ball.getRadius());
+    EXPECT_EQ(ball.getPosition().x, screen::WIDTH / 2 - ball.getRadius());
+    EXPECT_EQ(ball.getPosition().y, screen::HEIGHT / 2 - ball.getRadius());
 }
