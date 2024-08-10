@@ -34,7 +34,7 @@ void BreakoutGame::processEvents()
         }
     }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
     {
         m_ball.start();
     }
