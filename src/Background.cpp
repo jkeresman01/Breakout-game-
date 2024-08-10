@@ -7,7 +7,7 @@ namespace breakout
 {
 Background::Background()
 {
-    // setTexture("resources/images/background.jpg");
+    setTexture("resources/images/background_056.jpeg");
 }
 
 void Background::setTexture(const std::filesystem::path &path)
@@ -20,8 +20,8 @@ void Background::setTexture(const std::filesystem::path &path)
         return;
     }
 
+    m_texture.setSmooth(true);
     m_background.setTexture(m_texture);
-    m_background.setScale(background::SCALE_X, background::SCALE_Y);
 }
 
 void Background::render(sf::RenderWindow &window)

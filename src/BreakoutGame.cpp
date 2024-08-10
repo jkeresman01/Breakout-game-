@@ -65,9 +65,9 @@ void BreakoutGame::reset()
 {
     m_bricks.clear();
 
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < brickwall::ROWS; ++i)
     {
-        for (int j = 0; j < 20; ++j)
+        for (int j = 0; j < brickwall::COLUMNS; ++j)
         {
             float positionX = brick::START_POSTION_X + j * (brick::WIDTH + brick::SPACING_X);
             float positionY = brick::START_POSTION_Y + i * (brick::HEIGHT + brick::SPACING_Y);
