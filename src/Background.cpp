@@ -7,7 +7,7 @@ namespace breakout
 {
 Background::Background()
 {
-    setTexture("resources/images/background_056.jpeg");
+    setTexture("resources/images/moon.jpg");
 }
 
 void Background::setTexture(const std::filesystem::path &path)
@@ -21,6 +21,7 @@ void Background::setTexture(const std::filesystem::path &path)
     }
 
     m_texture.setSmooth(true);
+    m_background.setScale(0.7f, 0.7f);
     m_background.setTexture(m_texture);
 }
 

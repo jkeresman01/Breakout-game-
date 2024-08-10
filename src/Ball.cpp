@@ -14,7 +14,7 @@ namespace breakout
 Ball::Ball() : m_velocity(0.0f, 0.0f)
 {
     m_ball.setRadius(ball::RADIUS);
-    m_ball.setFillColor(sf::Color::Yellow);
+    m_ball.setFillColor(sf::Color::White);
 
     loadSound("resources/sound/brick_hit.wav");
     reset();
