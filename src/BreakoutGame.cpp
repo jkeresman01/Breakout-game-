@@ -33,6 +33,11 @@ void BreakoutGame::processEvents()
             m_window.close();
         }
     }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+    {
+        m_ball.start();
+    }
 }
 
 void BreakoutGame::update()

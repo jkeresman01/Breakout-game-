@@ -38,7 +38,7 @@ void Paddle::render(sf::RenderWindow &window)
 
 void Paddle::moveLeft()
 {
-    bool isPaddlePositionOnLeftBorder = m_paddle.getPosition().x < 0;
+    bool isPaddlePositionOnLeftBorder = m_paddle.getPosition().x <= 0;
 
     isPaddlePositionOnLeftBorder ? m_paddle.setPosition(0, m_paddle.getPosition().y)
                                  : m_paddle.move(-m_speed, 0);
@@ -47,7 +47,7 @@ void Paddle::moveLeft()
 void Paddle::moveRight()
 {
     bool isPaddlePositionOnRightBorder =
-        m_paddle.getPosition().x + m_paddle.getSize().x > screen::WIDTH;
+        m_paddle.getPosition().x + m_paddle.getSize().x >= screen::WIDTH;
 
     isPaddlePositionOnRightBorder
         ? m_paddle.setPosition(screen::WIDTH - paddle::WIDTH, m_paddle.getPosition().y)

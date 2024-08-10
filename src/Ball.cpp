@@ -43,7 +43,7 @@ void Ball::start()
     bool isBallMoving = m_velocity.x != 0 or m_velocity.y != 0;
     if (!isBallMoving)
     {
-        m_velocity = {0, -ball::VELOCITY_Y_COMPONENT};
+        m_velocity = {0, ball::VELOCITY_Y_COMPONENT};
     }
 }
 
