@@ -20,7 +20,7 @@ jobs:
       run: |
         cppcheck --enable=all . \
         --suppress=missingIncludeSystem \
-        --suppress=unusedFunction:test/PaddleTest.cpp 2> cppcheck-report.txt
+        --suppress=unusedFunction:test/LoggerTest.cpp 2> cppcheck-report.txt
         if [ -s cppcheck-report.txt ]; then
           echo "Reported issue: "
           cat cppcheck-report.txt
