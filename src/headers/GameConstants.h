@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 namespace breakout
 {
 
@@ -47,5 +49,11 @@ namespace background
 constexpr float SCALE_X = 0.3;
 constexpr float SCALE_Y = 0.3;
 } // namespace background
+
+namespace brickwall
+{
+constexpr uint32_t ROWS = 10;
+constexpr uint32_t COLUMNS = 20;
+} // namespace brickwall
 
 } // namespace breakout
