@@ -66,7 +66,13 @@ void BreakoutGame::renderBricks()
 
 void BreakoutGame::reset()
 {
-    m_bricks.clear();
+    resetBricks();
+    m_ball.reset();
+}
+
+void BreakoutGame::resetBricks()
+{
+     m_bricks.clear();
 
     for (int i = 0; i < brickwall::ROWS; ++i)
     {
@@ -78,8 +84,6 @@ void BreakoutGame::reset()
             m_bricks.emplace_back(positionX, positionY);
         }
     }
-
-    m_ball.reset();
 }
 
 } // namespace breakout
