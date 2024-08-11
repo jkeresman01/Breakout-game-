@@ -18,14 +18,12 @@ Paddle::Paddle() : m_speed(paddle::SPEED)
 
 void Paddle::update()
 {
-    bool isLefKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
-    if (isLefKeyPressed)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         moveLeft();
     }
 
-    bool isRightKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
-    if (isRightKeyPressed)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
         moveRight();
     }
@@ -40,8 +38,14 @@ void Paddle::moveLeft()
 {
     bool isPaddlePositionOnLeftBorder = m_paddle.getPosition().x <= 0;
 
-    isPaddlePositionOnLeftBorder ? m_paddle.setPosition(0, m_paddle.getPosition().y)
-                                 : m_paddle.move(-m_speed, 0);
+    if (isPaddlePositionOnLeftBorder)
+    {
+        m_paddle.setPosition(0, m_paddle.getPosition().y);
+    }
+    else
+    {
+        m_paddle.move(-m_speed, 0);
+    }
 }
 
 void Paddle::moveRight()
@@ -49,9 +53,14 @@ void Paddle::moveRight()
     bool isPaddlePositionOnRightBorder =
         m_paddle.getPosition().x + m_paddle.getSize().x >= screen::WIDTH;
 
-    isPaddlePositionOnRightBorder
-        ? m_paddle.setPosition(screen::WIDTH - paddle::WIDTH, m_paddle.getPosition().y)
-        : m_paddle.move(m_speed, 0);
+    if (isPaddlePositionOnRightBorder)
+    {
+        m_paddle.setPosition(screen::WIDTH - paddle::WIDTH, m_paddle.getPosition().y);
+    }
+    else
+    {
+        m_paddle.move(m_speed, 0);
+    }
 }
 
 void Paddle::setPosition(float positionX, float positionY)
