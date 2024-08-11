@@ -8,10 +8,10 @@ namespace breakout
 Brick::Brick(float positionX, float positionY)
 {
     m_brick.setSize(sf::Vector2f(brick::WIDTH, brick::HEIGHT));
-    m_brick.setFillColor(sf::Color(233, 217, 247, 90));
-    m_brick.setOutlineThickness(1.0f);
+    m_brick.setOutlineThickness(brick::OUTLINE_THICKNESS);
     m_brick.setOutlineColor(sf::Color::White);
     m_brick.setPosition(positionX, positionY);
+    m_brick.setFillColor(sf::Color(233, 217, 247, 90));
 }
 
 void Brick::render(sf::RenderWindow &window)

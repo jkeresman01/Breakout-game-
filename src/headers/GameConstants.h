@@ -9,6 +9,10 @@ namespace screen
 {
 constexpr float HEIGHT = 720.0f;
 constexpr float WIDTH = 1280.0f;
+
+constexpr float POSITION_X = 300.0f;
+constexpr float POSITION_Y = 200.0f;
+
 } // namespace screen
 
 namespace paddle
@@ -34,6 +38,9 @@ constexpr float WIDTH = 53.0f;
 
 constexpr float SPACING_X = 10.0f;
 constexpr float SPACING_Y = 5.0f;
+
+constexpr float OUTLINE_THICKNESS = 1.0f;
+
 } // namespace brick
 
 namespace ball
@@ -46,8 +53,8 @@ constexpr float RADIUS = 10.0f;
 
 namespace background
 {
-constexpr float SCALE_X = 0.3;
-constexpr float SCALE_Y = 0.3;
+constexpr float SCALE_X = 0.7f;
+constexpr float SCALE_Y = 0.7f;
 } // namespace background
 
 namespace brickwall

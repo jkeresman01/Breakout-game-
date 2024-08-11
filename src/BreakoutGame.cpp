@@ -1,15 +1,18 @@
 #include "headers/BreakoutGame.h"
 
 #include "headers/GameConstants.h"
+#include <SFML/System/Vector2.hpp>
 
 namespace breakout
 {
 
 BreakoutGame::BreakoutGame()
-    : m_window(sf::VideoMode(screen::WIDTH, screen::HEIGHT), "Breakout Game"), m_paddle(), m_ball(),
-      m_background()
+    : m_window(sf::VideoMode(screen::WIDTH, screen::HEIGHT), "", sf::Style::None), m_paddle(),
+      m_ball(), m_background()
 
 {
+    m_window.setPosition(sf::Vector2i(screen::POSITION_X, screen::POSITION_Y));
+
     reset();
 }
 

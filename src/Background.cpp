@@ -21,7 +21,7 @@ void Background::setTexture(const std::filesystem::path &path)
     }
 
     m_texture.setSmooth(true);
-    m_background.setScale(0.7f, 0.7f);
+    m_background.setScale(background::SCALE_X, background::SCALE_Y);
     m_background.setTexture(m_texture);
 }
 
