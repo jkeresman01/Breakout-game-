@@ -40,7 +40,7 @@ class Ball
     void changeBallTrajectory(const Paddle &paddle);
     void checkForBrickHits(std::list<Brick> &bricks);
 
-    void loadSound(const std::filesystem::path &path);
+    void loadSound(const std::filesystem::path &filepath);
 
   private:
     sf::CircleShape m_ball;

@@ -20,13 +20,13 @@ Ball::Ball() : m_velocity(0.0f, 0.0f)
     reset();
 }
 
-void Ball::loadSound(const std::filesystem::path &path)
+void Ball::loadSound(const std::filesystem::path &filepath)
 {
-    bool isSoundEffectLoadedSuccessfully = m_soundBuffer.loadFromFile(path.string());
+    bool isSoundEffectLoadedSuccessfully = m_soundBuffer.loadFromFile(filepath.string());
 
     if (!isSoundEffectLoadedSuccessfully)
     {
-        LOG_ERROR("Failed to load sound effect from " << path.string() << "!");
+        LOG_ERROR("Failed to load sound effect from " << filepath.string() << "!");
         return;
     }
 

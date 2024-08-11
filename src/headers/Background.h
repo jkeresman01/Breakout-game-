@@ -17,7 +17,7 @@ class Background
     void render(sf::RenderWindow &window);
 
   private:
-    void setTexture(const std::filesystem::path &path);
+    void setTexture(const std::filesystem::path &filepath);
 
   private:
     sf::Texture m_texture;

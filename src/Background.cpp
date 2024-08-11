@@ -10,13 +10,13 @@ Background::Background()
     setTexture("resources/images/moon.jpg");
 }
 
-void Background::setTexture(const std::filesystem::path &path)
+void Background::setTexture(const std::filesystem::path &filepath)
 {
-    bool isTextureLoadedSuccessfully = m_texture.loadFromFile(path.string());
+    bool isTextureLoadedSuccessfully = m_texture.loadFromFile(filepath.string());
 
     if (!isTextureLoadedSuccessfully)
     {
-        LOG_ERROR("Failed to load texture from: " << path.string() << "!")
+        LOG_ERROR("Failed to load texture from: " << filepath.string() << "!")
         return;
     }
 
