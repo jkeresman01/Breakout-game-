@@ -29,7 +29,7 @@ void Paddle::update()
     }
 }
 
-void Paddle::render(sf::RenderWindow &window)
+void Paddle::render(sf::RenderWindow &window) const
 {
     window.draw(m_paddle);
 }

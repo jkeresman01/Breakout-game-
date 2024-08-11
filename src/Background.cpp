@@ -25,7 +25,7 @@ void Background::setTexture(const std::filesystem::path &filepath)
     m_background.setTexture(m_texture);
 }
 
-void Background::render(sf::RenderWindow &window)
+void Background::render(sf::RenderWindow &window) const
 {
     window.draw(m_background);
 }

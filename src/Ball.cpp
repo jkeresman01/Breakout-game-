@@ -33,7 +33,7 @@ void Ball::loadSound(const std::filesystem::path &filepath)
     m_brickHitSoundEffect.setBuffer(m_soundBuffer);
 }
 
-void Ball::render(sf::RenderWindow &window)
+void Ball::render(sf::RenderWindow &window) const
 {
     window.draw(m_ball);
 }

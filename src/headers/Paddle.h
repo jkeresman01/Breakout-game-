@@ -12,7 +12,7 @@ class Paddle
     Paddle();
 
     void update();
-    void render(sf::RenderWindow &window);
+    void render(sf::RenderWindow &window) const;
 
     void moveLeft();
     void moveRight();

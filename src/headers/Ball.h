@@ -19,7 +19,7 @@ class Ball
     Ball();
 
     void update(const Paddle &paddle, std::list<Brick> &bricks);
-    void render(sf::RenderWindow &window);
+    void render(sf::RenderWindow &window) const;
     void reset();
     void start();
 
