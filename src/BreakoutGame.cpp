@@ -8,7 +8,7 @@ namespace breakout
 
 BreakoutGame::BreakoutGame()
     : m_window(sf::VideoMode(screen::WIDTH, screen::HEIGHT), "", sf::Style::None), m_paddle(),
-      m_ball(), m_background()
+      m_ball(), m_background(), m_resourceManager()
 
 {
     m_window.setPosition(sf::Vector2i(screen::POSITION_X, screen::POSITION_Y));
@@ -72,7 +72,7 @@ void BreakoutGame::reset()
 
 void BreakoutGame::resetBricks()
 {
-     m_bricks.clear();
+    m_bricks.clear();
 
     for (int i = 0; i < brickwall::ROWS; ++i)
     {

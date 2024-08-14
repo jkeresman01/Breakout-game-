@@ -8,6 +8,7 @@
 #include "Ball.h"
 #include "Brick.h"
 #include "Paddle.h"
+#include "ResourceManager.h"
 
 namespace breakout
 {
@@ -32,6 +33,7 @@ class BreakoutGame
     Paddle m_paddle;
     Ball m_ball;
     Background m_background;
+    ResourceManager m_resourceManager;
     std::list<Brick> m_bricks;
 };
 

@@ -11,6 +11,7 @@ set(SOURCE_FILES
     src/Main.cpp
     src/Ball.cpp
     src/Background.cpp
+    src/ResourceManager.cpp
     src/Brick.cpp
     src/BreakoutGame.cpp
     src/Paddle.cpp

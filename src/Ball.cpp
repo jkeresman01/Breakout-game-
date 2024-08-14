@@ -6,7 +6,7 @@
 #include <list>
 
 #include "headers/GameConstants.h"
-#include "headers/Logger.h"
+#include "headers/ResourceManager.h"
 
 namespace breakout
 {
@@ -15,22 +15,10 @@ Ball::Ball() : m_velocity(0.0f, 0.0f)
 {
     m_ball.setRadius(ball::RADIUS);
     m_ball.setFillColor(sf::Color::White);
+    m_brickHitSoundEffect.setBuffer(
+        ResourceManager::Instance().getSoundBugffer("resources/sound/brick_hit.wav"));
 
-    loadSound("resources/sound/brick_hit.wav");
     reset();
-}
-
-void Ball::loadSound(const std::filesystem::path &filepath)
-{
-    bool isSoundEffectLoadedSuccessfully = m_soundBuffer.loadFromFile(filepath.string());
-
-    if (!isSoundEffectLoadedSuccessfully)
-    {
-        LOG_ERROR("Failed to load sound effect from " << filepath.string() << "!");
-        return;
-    }
-
-    m_brickHitSoundEffect.setBuffer(m_soundBuffer);
 }
 
 void Ball::render(sf::RenderWindow &window) const

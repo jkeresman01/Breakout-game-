@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(ConwaysGameOfLifeTests)
+project(BreakoutGameTests)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -12,16 +12,14 @@ include_directories(${SFML_INCLUDE_DIRS})
 include_directories(../src/headers)
 
 set(SOURCE_FILES
-    ../src/Paddle.cpp
     ../src/Ball.cpp
     ../src/Brick.cpp
+    ../src/Paddle.cpp
+    ../src/ResourceManager.cpp
 )
 
 set(TEST_FILES
-    Test.cpp
-    BallTest.cpp
     PaddleTest.cpp
-    LoggerTest.cpp
 )
 
 add_executable(run-tests ${SOURCE_FILES} ${TEST_FILES})
