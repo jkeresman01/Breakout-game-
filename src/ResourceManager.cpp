@@ -23,7 +23,7 @@ void ResourceManager::loadSoundBuffer(const std::filesystem::path &filepath)
 
     if (soundBuffer.loadFromFile(filepath))
     {
-        m_textures.emplace(filepath.string(), soundBuffer);
+        m_soundBuffers.emplace(filepath.string(), soundBuffer);
     }
     else
     {
