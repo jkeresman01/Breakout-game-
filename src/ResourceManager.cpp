@@ -19,7 +19,6 @@ const sf::SoundBuffer &ResourceManager::getSoundBugffer(const std::filesystem::p
 void ResourceManager::loadSoundBuffer(const std::filesystem::path &filepath)
 {
     sf::SoundBuffer soundBuffer;
-    ;
 
     if (soundBuffer.loadFromFile(filepath))
     {
