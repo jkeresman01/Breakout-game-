@@ -11,7 +11,8 @@ class Brick
     Brick(float positionX, float positionY);
 
     void render(sf::RenderWindow &window);
-    sf::FloatRect getBounds() const;
+
+    sf::FloatRect getBounds() const { return m_brick.getGlobalBounds(); }
 
   private:
     sf::RectangleShape m_brick;

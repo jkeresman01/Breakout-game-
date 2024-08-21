@@ -67,15 +67,4 @@ void Paddle::setPosition(float positionX, float positionY)
 {
     m_paddle.setPosition(positionX, positionY);
 }
-
-sf::Vector2f Paddle::getPosition() const
-{
-    return m_paddle.getPosition();
-}
-
-sf::FloatRect Paddle::getBounds() const
-{
-    return m_paddle.getGlobalBounds();
-}
-
 } // namespace breakout

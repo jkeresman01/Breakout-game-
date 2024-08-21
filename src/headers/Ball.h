@@ -23,9 +23,9 @@ class Ball
     void reset();
     void start();
 
-    sf::Vector2f getPosition() const;
-    sf::Vector2f getVelocity() const;
-    float getRadius() const;
+    sf::Vector2f getPosition() const { return m_ball.getPosition(); }
+    sf::Vector2f getVelocity() const { return m_velocity; };
+    float getRadius() const { return m_ball.getRadius(); }
 
   private:
     float calculateSpeed();

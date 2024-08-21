@@ -19,9 +19,4 @@ void Brick::render(sf::RenderWindow &window)
     window.draw(m_brick);
 }
 
-sf::FloatRect Brick::getBounds() const
-{
-    return m_brick.getGlobalBounds();
-}
-
 } // namespace breakout

@@ -12,7 +12,7 @@ namespace breakout
 class ResourceManager
 {
   public:
-    ResourceManager() = default;
+    ResourceManager()                        = default;
     ResourceManager(const ResourceManager &) = delete;
     ResourceManager operator=(const ResourceManager &) = delete;
 

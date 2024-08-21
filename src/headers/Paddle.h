@@ -19,8 +19,8 @@ class Paddle
 
     void setPosition(float positionX, float positionY);
 
-    sf::FloatRect getBounds() const;
-    sf::Vector2f getPosition() const;
+    sf::FloatRect getBounds() const { return m_paddle.getGlobalBounds(); }
+    sf::Vector2f getPosition() const { return m_paddle.getPosition(); }
 
   private:
     sf::RectangleShape m_paddle;

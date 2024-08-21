@@ -8,7 +8,6 @@ namespace breakout
 
 Background::Background()
 {
-    m_texture.setSmooth(true);
     m_background.setScale(background::SCALE_X, background::SCALE_Y);
     m_background.setTexture(ResourceManager::Instance().getTexture("resources/images/moon.jpg"));
 }
