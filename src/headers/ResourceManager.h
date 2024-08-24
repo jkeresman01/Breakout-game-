@@ -9,6 +9,9 @@
 namespace breakout
 {
 
+    typedef std::unordered_map<std::string, sf::Texture> TexturesUnorderedMap;
+    typedef std::unordered_map<std::string, sf::SoundBuffer> SoundBuffersUnorderedMap;
+
 class ResourceManager
 {
   public:
@@ -26,8 +29,8 @@ class ResourceManager
     void loadSoundBuffer(const std::filesystem::path &filepath);
 
   private:
-    std::unordered_map<std::string, sf::Texture> m_textures;
-    std::unordered_map<std::string, sf::SoundBuffer> m_soundBuffers;
+    TexturesUnorderedMap m_textures;
+    SoundBuffersUnorderedMap m_soundBuffers;
 };
 
 } // namespace breakout

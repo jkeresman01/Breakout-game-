@@ -7,7 +7,7 @@ namespace breakout
 
 const sf::SoundBuffer &ResourceManager::getSoundBugffer(const std::filesystem::path &filepath)
 {
-    std::unordered_map<std::string, sf::SoundBuffer>::const_iterator it;
+    SoundBuffersUnorderedMap::const_iterator it;
     if (it = m_soundBuffers.find(filepath.string()); it == m_soundBuffers.end())
     {
         loadSoundBuffer(filepath);
@@ -20,19 +20,20 @@ void ResourceManager::loadSoundBuffer(const std::filesystem::path &filepath)
 {
     sf::SoundBuffer soundBuffer;
 
-    if (soundBuffer.loadFromFile(filepath))
-    {
-        m_soundBuffers.emplace(filepath.string(), soundBuffer);
-    }
-    else
+    bool isSoundBufferLoadedSuccssfully = soundBuffer.loadFromFile(filepath);
+
+    if (!isSoundBufferLoadedSuccssfully)
     {
         LOG_ERROR("Failed to load sound buffer from " << filepath.string() << "!");
+        return;
     }
+
+    m_soundBuffers.emplace(filepath.string(), soundBuffer);
 }
 
 const sf::Texture &ResourceManager::getTexture(const std::filesystem::path &filepath)
 {
-    std::unordered_map<std::string, sf::Texture>::const_iterator it;
+    TexturesUnorderedMap::const_iterator it;
     if (it = m_textures.find(filepath.string()); it == m_textures.end())
     {
         loadTexture(filepath);
@@ -45,14 +46,15 @@ void ResourceManager::loadTexture(const std::filesystem::path &filepath)
 {
     sf::Texture texture;
 
-    if (texture.loadFromFile(filepath))
-    {
-        m_textures.emplace(filepath.string(), texture);
-    }
-    else
+    bool isTextureLoadedSuccessfully = texture.loadFromFile(filepath);
+
+    if (!isTextureLoadedSuccessfully)
     {
         LOG_ERROR("Failed to load texture from " << filepath.string() << "!");
+        return;
     }
+
+    m_textures.emplace(filepath.string(), texture);
 }
 
 ResourceManager &ResourceManager::Instance()
