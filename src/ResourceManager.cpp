@@ -7,7 +7,7 @@ namespace breakout
 
 const sf::SoundBuffer &ResourceManager::getSoundBugffer(const std::filesystem::path &filepath)
 {
-    SoundBuffersUnorderedMap::iterator it =  m_soundBuffers.find(filepath.string());
+    SoundBuffersUnorderedMap::iterator it = m_soundBuffers.find(filepath.string());
 
     if (it == m_soundBuffers.end())
     {

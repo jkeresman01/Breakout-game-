@@ -15,7 +15,7 @@ typedef std::unordered_map<std::string, sf::SoundBuffer> SoundBuffersUnorderedMa
 class ResourceManager
 {
   public:
-    ResourceManager()                        = default;
+    ResourceManager() = default;
     ResourceManager(const ResourceManager &) = delete;
     ResourceManager operator=(const ResourceManager &) = delete;
 

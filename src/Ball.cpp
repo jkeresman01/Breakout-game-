@@ -81,7 +81,7 @@ bool Ball::isBallHittingTopBorder()
 
 bool Ball::isBallHittingVerticalBorder()
 {
-    bool isBallOnLeftBorder  = m_ball.getPosition().x < 0;
+    bool isBallOnLeftBorder = m_ball.getPosition().x < 0;
     bool isBallOnRightBorder = m_ball.getPosition().x + m_ball.getRadius() * 2 > screen::WIDTH;
 
     return isBallOnRightBorder or isBallOnLeftBorder;
@@ -114,7 +114,7 @@ void Ball::checkForBrickHits(std::list<Brick> &bricks)
 void Ball::changeBallTrajectory(const Paddle &paddle)
 {
     float bounceAngleInRadians = calculateBounceAngleInRadians(paddle);
-    float speed                = calculateSpeed();
+    float speed = calculateSpeed();
 
     m_velocity.x = speed * std::sin(bounceAngleInRadians);
     m_velocity.y = -speed * std::cos(bounceAngleInRadians);
@@ -130,7 +130,7 @@ float Ball::calculateSpeed()
 
 float Ball::calculateBounceAngleInRadians(const Paddle &paddle)
 {
-    float relativeIntersectX              = calculateRelativeIntersectX(paddle);
+    float relativeIntersectX = calculateRelativeIntersectX(paddle);
     float normalizedRelativeIntersectionX = relativeIntersectX / (paddle::WIDTH / 2.0f);
 
     return normalizedRelativeIntersectionX * (75 * (M_PI / 180.0f));
@@ -138,7 +138,7 @@ float Ball::calculateBounceAngleInRadians(const Paddle &paddle)
 
 float Ball::calculateRelativeIntersectX(const Paddle &paddle)
 {
-    float ballCenterX   = m_ball.getPosition().x + m_ball.getRadius();
+    float ballCenterX = m_ball.getPosition().x + m_ball.getRadius();
     float paddleCenterX = paddle.getPosition().x + paddle::WIDTH / 2.0f;
 
     return ballCenterX - paddleCenterX;
