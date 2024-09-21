@@ -25,7 +25,7 @@ class BreakoutGame
     void render();
     void reset();
 
-    void renderBricks();
+    void renderBricks(sf::RenderWindow &window) const;
     void resetBricks();
 
   private:

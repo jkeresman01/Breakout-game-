@@ -10,7 +10,7 @@ class Brick
   public:
     Brick(float positionX, float positionY);
 
-    void render(sf::RenderWindow &window);
+    void render(sf::RenderWindow &window) const;
 
     sf::FloatRect getBounds() const { return m_brick.getGlobalBounds(); }
 

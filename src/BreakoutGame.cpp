@@ -51,17 +51,18 @@ void BreakoutGame::update()
 
 void BreakoutGame::render()
 {
-    m_window.clear(sf::Color(13, 12, 3));
+    m_window.clear();
     m_background.render(m_window);
     m_paddle.render(m_window);
     m_ball.render(m_window);
-    renderBricks();
+    renderBricks(m_window);
     m_window.display();
 }
 
-void BreakoutGame::renderBricks()
+void BreakoutGame::renderBricks(sf::RenderWindow &window) const
 {
-    std::for_each(m_bricks.begin(), m_bricks.end(), [this](Brick &b) { b.render(m_window); });
+    std::for_each(m_bricks.begin(), m_bricks.end(),
+                  [&window](const Brick &b) { b.render(window); });
 }
 
 void BreakoutGame::reset()
@@ -74,9 +75,9 @@ void BreakoutGame::resetBricks()
 {
     m_bricks.clear();
 
-    for (int i = 0; i < brickwall::ROWS; ++i)
+    for (size_t i = 0; i < brickwall::ROWS; ++i)
     {
-        for (int j = 0; j < brickwall::COLUMNS; ++j)
+        for (size_t j = 0; j < brickwall::COLUMNS; ++j)
         {
             float positionX = brick::START_POSTION_X + j * (brick::WIDTH + brick::SPACING_X);
             float positionY = brick::START_POSTION_Y + i * (brick::HEIGHT + brick::SPACING_Y);

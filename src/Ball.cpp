@@ -5,8 +5,10 @@
 #include <cmath>
 #include <list>
 
+#include "headers/Colors.h"
 #include "headers/GameConstants.h"
 #include "headers/ResourceManager.h"
+#include "headers/Sound.h"
 
 namespace breakout
 {
@@ -14,9 +16,8 @@ namespace breakout
 Ball::Ball() : m_velocity(0.0f, 0.0f)
 {
     m_ball.setRadius(ball::RADIUS);
-    m_ball.setFillColor(sf::Color::White);
-    m_brickHitSoundEffect.setBuffer(
-        ResourceManager::Instance().getSoundBugffer("resources/sound/brick_hit.wav"));
+    m_ball.setFillColor(colors::White);
+    m_brickHitSoundEffect.setBuffer(ResourceManager::Instance().getSoundBugffer(sound::BrikHit));
 
     reset();
 }

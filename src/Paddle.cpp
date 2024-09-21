@@ -2,6 +2,7 @@
 
 #include <SFML/System/Vector2.hpp>
 
+#include "headers/Colors.h"
 #include "headers/GameConstants.h"
 
 namespace breakout
@@ -10,10 +11,10 @@ namespace breakout
 Paddle::Paddle() : m_speed(paddle::SPEED)
 {
     m_paddle.setSize(sf::Vector2f(paddle::WIDTH, paddle::HEIGHT));
-    m_paddle.setFillColor(sf::Color(233, 217, 247, 90));
     m_paddle.setOutlineThickness(paddle::OUTLINE_THICKNESS);
     m_paddle.setPosition(paddle::POSITION_X, paddle::POSITION_Y);
-    m_paddle.setOutlineColor(sf::Color::White);
+    m_paddle.setFillColor(colors::PaleWhite);
+    m_paddle.setOutlineColor(colors::White);
 }
 
 void Paddle::update()
